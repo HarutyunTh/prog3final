@@ -16,7 +16,7 @@ function setup() {
     for (var i = 0; i < sizey; i++) {
         matrix[i] = [];
         for (var j = 0; j < size1; j++) {
-            matrix[i][j] = Math.floor(random(5));
+            matrix[i][j] = Math.floor(random(6));
         }
     }
     // matrix = [
