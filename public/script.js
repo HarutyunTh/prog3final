@@ -44,7 +44,7 @@ function setup() {
                 grassutox.push(br);
             }
             else if (matrix[y][x] == 3) {
-                var gl = new Wolf(x, y, 3);
+                var gl = new wolf(x, y, 3);
                 wolfArr.push(gl);
             }
             else if (matrix[y][x] == 4) {

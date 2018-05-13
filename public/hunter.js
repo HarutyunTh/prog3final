@@ -1,8 +1,6 @@
-class hunter {
+class hunter extends LivingCreature {
     constructor(x, y, index) {
-        this.index = index;
-        this.x = x;
-        this.y = y;
+        super(x, y, index);
         this.naxkinvandakNum = 0;
         this.multiply = 0;
         this.die2 = 0;
@@ -24,19 +22,8 @@ class hunter {
 
 
     chooseCell(arr) {
-        this.newDirections();
-        var found = [];
-
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == arr) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+   this.newDirections();
+   return super.chooseCell(arr);
     }
     move() {
         var datarkvandak0 = this.chooseCell(0);

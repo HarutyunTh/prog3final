@@ -1,8 +1,6 @@
-class Wolf {
+class wolf extends LivingCreature  {
     constructor(x, y, index) {
-        this.index = index;
-        this.x = x;
-        this.y = y;
+        super(x, y, index);
         this.naxkinvandakNum = 0;
         this.multiply = 0;
         this.merneluvaxt = 0;
@@ -29,19 +27,8 @@ class Wolf {
 
 
     chooseCell(a) {
-        this.newDirections();
-        var found = [];
-
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == a) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+   this.newDirections();
+   return super.chooseCell(a);
     }
 
 
