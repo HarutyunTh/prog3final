@@ -1,4 +1,6 @@
-class GrassEater extends LivingCreature {
+var  LivingCreature = require("./class.js");
+
+module.exports = class GrassEater extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],

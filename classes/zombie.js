@@ -1,4 +1,6 @@
-class zombi extends LivingCreature {
+var  LivingCreature = require("./class.js");
+
+module.exports = class zombi extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.naxkinvandakNum = 0;
