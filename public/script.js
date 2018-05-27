@@ -10,7 +10,7 @@ socket.on("matrix", gcel);
 //-----------------------
 socket.on("exanak", function (weather) {
     if (weather == "garun") {
-        col = '#9fdfbf';
+        col1 = '#9fdfbf';
     }
     else if (weather == "dzmer") {
         col = '#ffffff';

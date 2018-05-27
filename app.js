@@ -66,7 +66,7 @@ for (var y = 0; y < matrix.length; ++y) {
         }
     }
 }
-io.on('connection', function (socket) {});
+io.on('connection', function (socket) { });
 
 //drav@
 setInterval(function () {
@@ -108,13 +108,21 @@ setInterval(function () {
     }
     json_push_mlp++;
     console.log(json_push_mlp);
-    if (json_push_mlp >= 5) {
-    var file = 'die.json';
-    for (var i in arr_obj) {
-        gt.appendFileSync(file, JSON.stringify(arr_obj[i]) + '\n');
+    if (json_push_mlp >= 10) {
+        var file = 'die.json';
+        for (var i in arr_obj) {
+            gt.appendFileSync(file, JSON.stringify(arr_obj[i]) + '\n');
+        }
+        arr_obj = [];
+        json_push_mlp = 0;
+
+        e = 'die.json';
+        for (var i in arr_obj) {
+            gt.appendFileSync(file, JSON.stringify(arr_obj[i]) + '\n');
+        }
+        arr_obj = [];
+        json_push_mlp = 0;
     }
-    arr_obj = [];
-}
     io.sockets.emit('matrix', matrix);
     io.sockets.emit('exanak', weather);
 }, 1000);
