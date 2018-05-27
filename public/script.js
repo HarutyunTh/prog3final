@@ -1,12 +1,30 @@
-var side =15;
-var sizex = 20;
-var sizey = 20;
-var size1 = 20;
-var socket = io.connect('http://localhost:3000');//Samvelik
-socket.on("matrix",gcel);
+var side = 15;
+var side1 = 15;
+var sizex = 60;
+var sizey = 60;
+var col = "#acacac";
+var socket = io.connect('http://localhost:3000');
+
+//--------------------------
+socket.on("matrix", gcel);
+//-----------------------
+socket.on("exanak", function (weather) {
+    if (weather == "garun") {
+        col = '#9fdfbf';
+    }
+    else if (weather == "dzmer") {
+        col = '#ffffff';
+    }
+    else if (weather == "amar") {
+        col = '#4dffc3';
+    }
+    else if (weather == "ashun") {
+        col = '#ffb366';
+    }
+});
+
 function setup() {
     createCanvas(sizex * side, sizey * side);
-    background('#acacac');
 }
 
 
@@ -20,7 +38,7 @@ function gcel(matrix) {
                 rect(x * side1, y * side1, side1, side1);
             }
             else if (matrix[y][x] == 0) {
-                fill("#acacac");
+                fill(col);
                 rect(x * side1, y * side1, side1, side1);
             }
             else if (matrix[y][x] == 2) {

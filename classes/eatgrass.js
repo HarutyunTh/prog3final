@@ -1,5 +1,4 @@
-var  LivingCreature = require("./class.js");
-
+var LivingCreature = require("./class.js");
 module.exports = class GrassEater extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
@@ -13,17 +12,18 @@ module.exports = class GrassEater extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-  chooseCell(ch) {
-   this.getNewCoordinates();
-   return super.chooseCell(ch);
-}
+    chooseCell(ch) {
+        this.getNewCoordinates();
+        return super.chooseCell(ch);
+    }
 
     mul() {
-        var emptyCord = this.chooseCell(0);//
-        var cord = random(emptyCord);
-        if (cord) {
-            var x = cord[0];
-            var y = cord[1];
+        var datarkvandak = this.chooseCell(0);
+        var index = Math.floor(Math.random() * (datarkvandak.length));
+
+        if (index) {
+            var x = index[0];
+            var y = index[1];
             var eater = new GrassEater(x, y, this.index);
             grassutox.push(eater);
 
@@ -36,6 +36,11 @@ module.exports = class GrassEater extends LivingCreature {
         for (var i in grassutox) {
             if (this.x == grassutox[i].x && this.y == grassutox[i].y) {
                 matrix[this.y][this.x] = 0;
+                var obj = {
+                    name : 'xotaker',
+                    inchic_e_mere : 'sovamah e exe'
+                }
+                arr_obj.push(obj);
                 grassutox.splice(i, 1);
 
                 break;
@@ -45,12 +50,14 @@ module.exports = class GrassEater extends LivingCreature {
     }
     move() {
         var datarkvandak = this.chooseCell(0);
-        var norvandak = random(datarkvandak);
-        if (norvandak) {
+        
+        var index = Math.floor(Math.random() * (datarkvandak.length));
+        var i = datarkvandak[index];
+        if (i) {
             this.energy--;
             matrix[this.y][this.x] = 0;
-            var norx = norvandak[0];
-            var nory = norvandak[1];
+            var norx = i[0];
+            var nory = i[1];
             matrix[nory][norx] = 2;
             this.x = norx;
             this.y = nory;
@@ -61,13 +68,15 @@ module.exports = class GrassEater extends LivingCreature {
         }
     }
     eat() {
-        var datarkvandak = this.chooseCell(1);
-        var norvandak = random(datarkvandak);
-        if (norvandak) {
+        var datarkvandak = this.chooseCell(0);
+        var hrr = Math.floor(Math.random() * (datarkvandak.length));
+        var i = datarkvandak[hrr];
+
+        if (i) {
             this.energy++;
             matrix[this.y][this.x] = 0;
-            var norx = norvandak[0];
-            var nory = norvandak[1];
+            var norx = i[0];
+            var nory = i[1];
             matrix[nory][norx] = 2;
             this.x = norx;
             this.y = nory;

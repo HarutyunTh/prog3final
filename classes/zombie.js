@@ -1,4 +1,4 @@
-var  LivingCreature = require("./class.js");
+var LivingCreature = require("./class.js");
 
 module.exports = class zombi extends LivingCreature {
     constructor(x, y, index) {
@@ -24,8 +24,8 @@ module.exports = class zombi extends LivingCreature {
 
 
     chooseCell(arr) {
-   this.newDirections();
-   return super.chooseCell(arr);
+        this.newDirections();
+        return super.chooseCell(arr);
     }
 
 
@@ -33,12 +33,16 @@ module.exports = class zombi extends LivingCreature {
 
     move() {
         var datarkvandak0 = this.chooseCell(0);
-        var cord = random(datarkvandak0);
+        var datarkvandak1 = this.chooseCell(1);
+        var datarkvandak = datarkvandak0.concat(datarkvandak1)
 
-        if (cord) {
+        var hrr = Math.floor(Math.random() * (datarkvandak.length))
+        var y = datarkvandak[hrr];
+
+        if (y) {
             matrix[this.y][this.x] = this.naxkinvandakNum;
-            var norx = cord[0];
-            var nory = cord[1];
+            var norx = y[0];
+            var nory = y[1];
             matrix[nory][norx] = 4;
             this.x = norx;
             this.y = nory;
@@ -50,16 +54,18 @@ module.exports = class zombi extends LivingCreature {
 
 
     eat() {
-        var emptyCord = this.chooseCell(3);
-        var emptyCord1 = this.chooseCell(5);
-        var cord = random(emptyCord);
-        var cord1 = random(emptyCord1);
-        if (cord1) {
+        var datarkvandak = this.chooseCell(3);
+        var hrr = Math.floor(Math.random() * (datarkvandak.length))
+        var d = datarkvandak[hrr];
+        var datarkvandak = this.chooseCell(5);
+        var grr = Math.floor(Math.random() * (datarkvandak.length))
+        var f = datarkvandak[grr];
+        if (d) {
             this.move();
         }
-        else if (cord) {
-            var x = cord[0];
-            var y = cord[1];
+        else if (f) {
+            var x = f[0];
+            var y = f[1];
 
             if (matrix[y][x] == 3) {
                 matrix[y][x] = 4;
@@ -69,8 +75,13 @@ module.exports = class zombi extends LivingCreature {
                 for (var i in wolfArr) {
                     if (this.x == wolfArr[i].x && this.y == wolfArr[i].y) {
                         matrix[this.y][this.x] = 0;
+                        var obj = {
+                            name : 'xotaker',
+                            inchic_e_mere : 'sovamah e exe'
+                        }
+                        arr_obj.push(obj);
                         wolfArr.splice(i, 1);
-                        console.log("fffsfs")
+
                     }
 
 
@@ -105,6 +116,11 @@ module.exports = class zombi extends LivingCreature {
         matrix[this.y][this.x] = 0;
         for (var i in zombiarr) {
             if (this.x == zombiarr[i].x && this.y == zombiarr[i].y) {
+                var obj = {
+                    name : 'zombi',
+                    inchic_e_mere : 'sovamah e exe'
+                }
+                arr_obj.push(obj);
                 zombiarr.splice(i, 1);
             }
 

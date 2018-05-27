@@ -1,6 +1,6 @@
-var  LivingCreature = require("./class.js");
+var LivingCreature = require("./class.js");
 
-module.exports = class wolf extends LivingCreature  {
+module.exports = class wolf extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.naxkinvandakNum = 0;
@@ -29,8 +29,8 @@ module.exports = class wolf extends LivingCreature  {
 
 
     chooseCell(a) {
-   this.newDirections();
-   return super.chooseCell(a);
+        this.newDirections();
+        return super.chooseCell(a);
     }
 
 
@@ -39,16 +39,17 @@ module.exports = class wolf extends LivingCreature  {
     move() {
         var datarkvandak0 = this.chooseCell(0);
         var datarkvandak1 = this.chooseCell(1);
-        var emptyCord = datarkvandak1.concat(datarkvandak0);
+        var datarkvandak = datarkvandak0.concat(datarkvandak1)
+
+        var hrr = Math.floor(Math.random() * (datarkvandak.length))
+        var t = datarkvandak[hrr];
 
 
-        var cord = random(emptyCord);
 
+        if (t) {
 
-        if (cord) {
-
-            var x = cord[0];
-            var y = cord[1];
+            var x = t[0];
+            var y = t[1];
 
 
 
@@ -64,20 +65,26 @@ module.exports = class wolf extends LivingCreature  {
 
     eat() {
         var datarkvandak = this.chooseCell(2);
+        var hrr = Math.floor(Math.random() * (datarkvandak.length));
+        var c = datarkvandak[hrr];
 
-        var norvandak = random(datarkvandak);
 
 
-        if (norvandak) {
+        if (c) {
             this.energy++;
             matrix[this.y][this.x] = 0;
-            var norx = norvandak[0];
-            var nory = norvandak[1];
+            var norx = c[0];
+            var nory = c[1];
             matrix[nory][norx] = 3;
             this.x = norx;
             this.y = nory;
             for (var i in grassutox) {//////---------
                 if (norx == grassutox[i].x && nory == grassutox[i].y) {
+                    var obj = {
+                        name : 'xotaker',
+                        inchic_e_mere : 'kerel e gishatichy'
+                    }
+                    arr_obj.push(obj);
                     grassutox.splice(i, 1);
                     break;
                 }
@@ -101,6 +108,11 @@ module.exports = class wolf extends LivingCreature  {
         matrix[this.y][this.x] = 0;
         for (var i in wolfArr) {
             if (this.x == wolfArr[i].x && this.y == wolfArr[i].y) {
+                    var obj = {
+                        name : 'gishatich',
+                        inchic_e_mere : 'sovamah e exe'
+                    }
+                    arr_obj.push(obj);
                 wolfArr.splice(i, 1);
             }
 

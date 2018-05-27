@@ -1,4 +1,4 @@
-var  LivingCreature = require("./class.js");
+var LivingCreature = require("./class.js");
 
 module.exports = class hunter extends LivingCreature {
     constructor(x, y, index) {
@@ -24,23 +24,23 @@ module.exports = class hunter extends LivingCreature {
 
 
     chooseCell(arr) {
-   this.newDirections();
-   return super.chooseCell(arr);
+        this.newDirections();
+        return super.chooseCell(arr);
     }
     move() {
         var datarkvandak0 = this.chooseCell(0);
         var datarkvandak1 = this.chooseCell(1);
+        var datarkvandak = datarkvandak0.concat(datarkvandak1)
 
-        var emptyCord = datarkvandak1.concat(datarkvandak0);
+        var hrr = Math.floor(Math.random() * (datarkvandak.length))
+        var u = datarkvandak[hrr];
 
 
-        var cord = random(emptyCord);
 
+        if (u) {
 
-        if (cord) {
-
-            var x = cord[0];
-            var y = cord[1];
+            var x = u[0];
+            var y = u[1];
 
 
 
@@ -55,14 +55,14 @@ module.exports = class hunter extends LivingCreature {
 
 
     eat() {
-        var emptyCord = this.chooseCell(4);
+        var datarkvandak = this.chooseCell(4);
+        var hrr = Math.floor(Math.random() * (datarkvandak.length))
+        var y = datarkvandak[hrr]
 
-        var cord = random(emptyCord);
-
-
-        if (cord) {
-            var x = cord[0];
-            var y = cord[1];
+        if (y) {
+            var x = y
+            [0];
+            var y = y[1];
 
             matrix[y][x] = 5;
 
@@ -108,8 +108,11 @@ module.exports = class hunter extends LivingCreature {
             if (this.x == huntarr[i].x && this.y == huntarr[i].y) {
                 huntarr.splice(i, 1);
             }
-
-
+            var obj = {
+                    name : 'vorsord',
+                    inchic_e_mere : 'heracel e'
+                }
+                arr_obj.push(obj);
         }
     }
 
